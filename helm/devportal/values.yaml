@@ -1,0 +1,25 @@
+---
+project: "rso-dev-ltcr-services-d-slh5"
+region: "us-east4"
+zone: "us-east4-a"
+disk: rso-dev-ltcr-d-gce-apg-devportal-web
+
+database:
+  name: "ltcr-apigee-devportal"
+  instance: "rso-dev-ltcr-d-sql-pg"
+
+serviceAccounts:
+  k8s: ltcr-devportal
+  iam: "sa-ltcr-apigee-devportal-d@rso-dev-svc-accts-d-slh5.iam.gserviceaccount.com"
+
+services:
+  drupal:
+    port: 9000
+  nginx:
+    port: 8443
+  domain: developers.ltcr.lite-portal.com
+
+images:
+  cloudSqlProxy: "us-east4-docker.pkg.dev/rso-dev-authorized-images-slh5/ltcr-artifact-repo/cloud-sql-proxy:2.15.1"
+  drupal: "us-east4-docker.pkg.dev/rso-dev-authorized-images-slh5/ltcr-artifact-repo/devportal/drupal:1.0"
+  nginx: "us-east4-docker.pkg.dev/rso-dev-authorized-images-slh5/ltcr-artifact-repo/devportal/nginx:1.27.5"

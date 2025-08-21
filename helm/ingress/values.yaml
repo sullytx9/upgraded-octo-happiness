@@ -1,0 +1,6 @@
+---
+staticIpName: rso-dev-ltcr-d-ilb-gke-portal
+
+services:
+  devportal:
+    domain: developers.lite-portal.com

@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Chart.Name }}
+  annotations:
+    kubernetes.io/ingress.allow-http: "false"
+    ingress.gcp.kubernetes.io/pre-shared-cert: ltcr-portal-ingress
+    kubernetes.io/ingress.global-static-ip-name: {{ .Values.staticIpName }}
+    kubernetes.io/ingress.class: gce-internal
+spec:
+  defaultBackend:
+    service:
+      name: {{ .Values.services.devportal.name }}
+      port:
+        name: https
